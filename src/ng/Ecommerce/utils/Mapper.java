@@ -1,0 +1,69 @@
+package ng.Ecommerce.utils;
+
+import ng.Ecommerce.data.models.Customer;
+import ng.Ecommerce.data.models.StoreKeeper;
+import ng.Ecommerce.dtos.requests.RegisterRequest;
+import ng.Ecommerce.dtos.responses.LoginResponse;
+import ng.Ecommerce.dtos.responses.LogoutResponse;
+import ng.Ecommerce.dtos.responses.RegisterResponse;
+
+public class Mapper {
+
+    public static Customer mapToCustomer(RegisterRequest request) {
+        Customer customer = new Customer();
+        customer.setName(request.getName());
+        customer.setEmail(request.getEmail());
+        customer.setPassword(request.getPassword());
+        return customer;
+    }
+
+    public static StoreKeeper mapToStoreKeeper(RegisterRequest request) {
+        StoreKeeper storeKeeper = new StoreKeeper();
+        storeKeeper.setName(request.getName());
+        storeKeeper.setEmail(request.getEmail());
+        storeKeeper.setPassword(request.getPassword());
+        return storeKeeper;
+    }
+
+    public static RegisterResponse mapToRegisterResponse(Customer customer) {
+        RegisterResponse response = new RegisterResponse();
+        response.setName(customer.getName());
+        response.setEmail(customer.getEmail());
+        return response;
+    }
+
+    public static RegisterResponse mapToRegisterResponse(StoreKeeper storeKeeper) {
+        RegisterResponse response = new RegisterResponse();
+        response.setName(storeKeeper.getName());
+        response.setEmail(storeKeeper.getEmail());
+        return response;
+    }
+
+    public static LoginResponse mapToLoginResponse(Customer customer) {
+        LoginResponse response = new LoginResponse();
+        response.setName(customer.getName());
+        response.setLoggedIn(customer.isLoggedIn());
+        return response;
+    }
+
+    public static LoginResponse mapToLoginResponse(StoreKeeper storeKeeper) {
+        LoginResponse response = new LoginResponse();
+        response.setName(storeKeeper.getName());
+        response.setLoggedIn(storeKeeper.isLoggedIn());
+        return response;
+    }
+
+    public static LogoutResponse mapToLogoutResponse(Customer customer) {
+        LogoutResponse response = new LogoutResponse();
+        response.setEmail(customer.getEmail());
+        response.setMessage("Logout successful");
+        return response;
+    }
+
+    public static LogoutResponse mapToLogoutResponse(StoreKeeper storeKeeper) {
+        LogoutResponse response = new LogoutResponse();
+        response.setEmail(storeKeeper.getEmail());
+        response.setMessage("Logout successful");
+        return response;
+    }
+}
