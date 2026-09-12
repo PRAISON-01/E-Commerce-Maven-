@@ -1,19 +1,14 @@
-package ng.Ecommerce.data.models;
+package ng.Ecommerce.dtos.requests;
 
 import lombok.Data;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.math.BigDecimal;
 
 @Data
-@Document("products")
-public class Product {
-    @Id
+public class AddProductRequest {
     private String productId;
     private String name;
     private String description;
     private BigDecimal price;
     private int quantity;
-
 }
