@@ -1,8 +1,11 @@
 package ng.Ecommerce.utils;
 
 import ng.Ecommerce.data.models.Customer;
+import ng.Ecommerce.data.models.Product;
 import ng.Ecommerce.data.models.StoreKeeper;
+import ng.Ecommerce.dtos.requests.AddProductRequest;
 import ng.Ecommerce.dtos.requests.RegisterRequest;
+import ng.Ecommerce.dtos.responses.AddProductResponse;
 import ng.Ecommerce.dtos.responses.LoginResponse;
 import ng.Ecommerce.dtos.responses.LogoutResponse;
 import ng.Ecommerce.dtos.responses.RegisterResponse;
@@ -66,4 +69,26 @@ public class Mapper {
         response.setMessage("Logout successful");
         return response;
     }
+
+    public static Product map(AddProductRequest addProductRequest) {
+        Product product = new Product();
+        product.setProductId(addProductRequest.getProductId());
+        product.setName(addProductRequest.getName());
+        product.setDescription(addProductRequest.getDescription());
+        product.setPrice(addProductRequest.getPrice());
+        product.setQuantity(addProductRequest.getQuantity());
+        return product;
+    }
+
+    public static AddProductResponse map(Product product) {
+        AddProductResponse response = new AddProductResponse();
+
+        response.setProductId(product.getProductId());
+        response.setName(product.getName());
+        response.setDescription(product.getDescription());
+        response.setPrice(product.getPrice());
+        response.setQuantity(product.getQuantity());
+        return response;
+    }
+
 }
