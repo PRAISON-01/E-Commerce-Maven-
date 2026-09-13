@@ -5,10 +5,8 @@ import ng.Ecommerce.data.models.Product;
 import ng.Ecommerce.data.models.StoreKeeper;
 import ng.Ecommerce.dtos.requests.AddProductRequest;
 import ng.Ecommerce.dtos.requests.RegisterRequest;
-import ng.Ecommerce.dtos.responses.AddProductResponse;
-import ng.Ecommerce.dtos.responses.LoginResponse;
-import ng.Ecommerce.dtos.responses.LogoutResponse;
-import ng.Ecommerce.dtos.responses.RegisterResponse;
+import ng.Ecommerce.dtos.requests.UpdateProductRequest;
+import ng.Ecommerce.dtos.responses.*;
 
 public class Mapper {
 
@@ -88,6 +86,27 @@ public class Mapper {
         response.setDescription(product.getDescription());
         response.setPrice(product.getPrice());
         response.setQuantity(product.getQuantity());
+        return response;
+    }
+
+    public static Product map(UpdateProductRequest request, Product product) {
+        product.setName(request.getName().toLowerCase().trim());
+        product.setDescription(request.getDescription().toLowerCase().trim());
+        product.setPrice(request.getPrice());
+        product.setQuantity(request.getQuantity());
+        product.setProductId(request.getProductId());
+
+        return product;
+    }
+
+    public static UpdateProductResponse map(UpdateProductResponse response, Product product) {
+        response.setMessage("Product Added Successfully");
+        response.setName(product.getName());
+        response.setDescription(product.getDescription());
+        response.setQuantity(product.getQuantity());
+        response.setProductId(product.getProductId());
+        response.setPrice(product.getPrice());
+
         return response;
     }
 
