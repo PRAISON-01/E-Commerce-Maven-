@@ -70,7 +70,6 @@ public class Mapper {
 
     public static Product map(AddProductRequest addProductRequest) {
         Product product = new Product();
-        product.setProductId(addProductRequest.getProductId());
         product.setName(addProductRequest.getName());
         product.setDescription(addProductRequest.getDescription());
         product.setPrice(addProductRequest.getPrice());
