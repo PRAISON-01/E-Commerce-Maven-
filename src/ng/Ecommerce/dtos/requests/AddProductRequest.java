@@ -6,9 +6,10 @@ import java.math.BigDecimal;
 
 @Data
 public class AddProductRequest {
-    private String productId;
     private String name;
     private String description;
     private BigDecimal price;
     private int quantity;
+
+    private String storekeeperEmail;
 }
